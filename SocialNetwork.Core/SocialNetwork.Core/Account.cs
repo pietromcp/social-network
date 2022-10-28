@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace SocialNetwork.Core {
     public class Account {
         private readonly List<string> feed;
-        
-        public Account(string username) {
+        private readonly List<string> dashboard;
+        public Account(string username)
+        {
+            dashboard = new List<string>();
             feed = new List<string>();
         }
 
@@ -15,5 +18,15 @@ namespace SocialNetwork.Core {
         public void PublishOnFeed(string message) {
             feed.Add(message);
         }
+
+        public void Subscribe(Account account)
+        {
+            foreach (string message in account.Feed)
+            {
+                dashboard.Add(message);
+            }
+        }
+
+        public IReadOnlyList<string> Dashboard => dashboard.AsReadOnly(); 
     }
 }
