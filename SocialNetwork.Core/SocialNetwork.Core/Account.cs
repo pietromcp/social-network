@@ -8,6 +8,8 @@ namespace SocialNetwork.Core {
             feed = new List<string>();
         }
 
+        public IReadOnlyList<string> FeedFor(Account _) => Feed;
+
         public IReadOnlyList<string> Feed => feed.AsReadOnly();
 
         public void PublishOnFeed(string message) {
