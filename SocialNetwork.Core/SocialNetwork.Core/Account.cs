@@ -5,8 +5,10 @@ namespace SocialNetwork.Core {
     public class Account {
         private readonly List<string> feed;
         private readonly List<string> dashboard;
+        public string Username { get; internal set; }
         public Account(string username)
         {
+            Username = username;
             dashboard = new List<string>();
             feed = new List<string>();
         }

@@ -48,4 +48,14 @@ public class Tests
         Assert.That(charlie.Dashboard.Contains(messageThomas));
         Assert.That(charlie.Dashboard.Contains(messageAlice));
     }
+
+    [Test]
+    public void CanMentionAnotherUser(){
+        var alice = new Account("Alice");
+        var charlie = new Account("Charlie");
+
+        var messageAlice = new Message("Hello, @Charlie!");
+        
+        Assert.That(messageAlice.MentionedAccount.Contains(charlie.Username));
+    }
 }
